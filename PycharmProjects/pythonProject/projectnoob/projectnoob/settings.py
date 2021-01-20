@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -25,20 +24,19 @@ SECRET_KEY = '^ist0sbfk!p!rv1=n)yd24m6j@bj_4pyp9w)gv8=904p53+ib&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    # 'logs.apps.LogsConfig',
+    'logs.apps.LogsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'logs',
 ]
 
 MIDDLEWARE = [
@@ -129,9 +127,3 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 120
 
 SESSION_EXPIRE_SECONDS = 120
-
-# SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
-#
-# TEMPLATE_DIRS = [
-#     os.path.join(BASE_DIR, 'logs/templates'),
-# ]

@@ -8,7 +8,7 @@ from django.contrib.admin.models import LogEntry
 LogEntry.objects.all().delete()
 
 class EntryAdmin(admin.ModelAdmin):
-    list_display = ('firm_name','date','weight','quantity','making_type','remarks')
+    list_display = ('firm_name','date','size','weight','quantity','making_type','remarks')
     list_filter = ('firm_name','date')
 
 class FirmAdmin(admin.ModelAdmin):

@@ -4,6 +4,7 @@ from . import views
 app_name = 'logs'
 
 urlpatterns = [
-    path('',views.index,name='index'),
+    path('',views.print_details,name='print_details'),
+    
     # path('',views.requestData,name='requestData'),
 ]
