@@ -25,16 +25,16 @@ class NameForm(forms.Form):
         today_date = date.today()
 
         if start_date>today_date and end_date>today_date:
-            self._errors['firm_name']=[u"Start and end date can't exceed todays's date." ]
-            # raise forms.ValidationError(_("Start and end date can't exceed today's date."))
+            #self._errors['firm_name']=[u"Start and end date can't exceed todays's date." ]
+            raise forms.ValidationError(_("Start and end date can't exceed today's date."))
         elif start_date>today_date:
-            # raise forms.ValidationError(_("Start date can't exceed today's date."))
-            self._errors['firm_name']=[u"Start date can't exceed today's date." ]
+            raise forms.ValidationError(_("Start date can't exceed today's date."))
+            #self._errors['firm_name']=[u"Start date can't exceed today's date." ]
         elif end_date > today_date:
-            self._errors['firm_name']=[u"End date can't exceed today's date." ]
-            # raise forms.ValidationError(_("End date can't exceed today's date."))
+            #self._errors['firm_name']=[u"End date can't exceed today's date." ]
+            raise forms.ValidationError(_("End date can't exceed today's date."))
         elif(end_date < start_date):
-            self._errors['firm_name']=[u"End date must be greater than start date." ]
-            # raise ValidationError(_("Start date must be greater than today's date."))
+            #self._errors['firm_name']=[u"End date must be greater than start date." ]
+            raise ValidationError(_("Start date must be greater than today's date."))
         
         return self.cleaned_data
