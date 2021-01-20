@@ -13,22 +13,33 @@ class Firm(models.Model):
         self.firm_name = self.firm_name.upper()
         auto_now_add = False
         # self.date = timezone.now
+    
+    class Meta:
+        ordering = ['firm_name']
 
 class Entry(models.Model):
     firm_name = models.ForeignKey(Firm,on_delete=models.CASCADE)
     date = models.DateField(default=timezone.now)
+    size_range = [
+        ('1.0','1.0'),
+        ('1.5','1.5'),
+        ('2.0','2.0'),
+        ('2.5','2.5'),
+        ('3.0','3.0'),
+        ('4.0','4.0'),
+        ('5.0','5.0'),
+        ('6.0','6.0'),
+    ]
+    size = models.CharField(max_length = 3,choices=size_range)
     weight = models.DecimalField(max_digits = 10 , decimal_places=3,validators=[
         MinValueValidator(1)
     ])
-    quantity = models.IntegerField(validators=[
-        MinValueValidator(1)
-    ])
+    quantity = models.IntegerField(default=0)
     making = (
-        (u'F',u'Framed'),
-        (u'S',u'Sticked')
+        (u'Framed',u'Framed'),
+        (u'Sticked',u'Sticked')
     )
-    making_type = models.CharField(max_length=10,choices=making,default='Framed')
+    making_type = models.CharField(max_length=10,choices=making)
     remarks = models.CharField(max_length=100,blank=True)
     def __str__(self):
-        # s = str(self.name)+" "+str(self.weight)+" "+str(self.quantity)
         return str(self.firm_name)
