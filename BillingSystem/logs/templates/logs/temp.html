@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* table tr:nth-child(1) {
+        table tr:nth-child(1) {
             visibility: collapse;
-        } */
+        }
         .FirmName{
             color: black;
             size: 12px;
@@ -17,19 +17,14 @@
         }
         table, body, p, h2, td, form{
             text-align: center;
-            align : "center";
-            font-style: aerial;
+            align : "center"
         }
         #head1{
             text-align: center;
-            margin: 80px 0px 20px 0px ;
+            margin: 80px 0px 0px 0px ;
             font-weight: 400;
             font-size: 22px;
             color: rgb(22, 21, 112);
-            /* border: 2px solid;
-            border-radius: 12px;
-            border-color: black;
-            */
         }
         #button1{
             color: rgb(44, 13, 114);
@@ -52,7 +47,7 @@
     {{form.non_field_errors}}
     <form method="post">
         {% csrf_token %}
-        <table align="center" style="padding: 0px;font-size: 18px;line-height: 30px;">
+        <table align="center" style="padding: 0px;font-size: 18px;">
             {{ form.as_table }}
         </table>
         <button type="submit" id="button1">Submit</button>
