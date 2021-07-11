@@ -4,7 +4,8 @@ from . import views
 app_name = 'logs'
 
 urlpatterns = [
-    path('',views.print_details,name='print_details'),
+    path('print_details',views.print_details,name='print_details'),
+    path('',views.home_page,name='home_page'),
     
     # path('',views.requestData,name='requestData'),
 ]
