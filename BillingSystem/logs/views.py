@@ -13,14 +13,13 @@ def print_details(request):
     if request.method=='POST':
         form = NameForm(request.POST)
         if(form.is_valid()):
-            name = form.cleaned_data['name']
+            name = form.cleaned_data['firm_name']
             start_date = form.cleaned_data['start_date']
             end_date = form.cleaned_data['end_date']
             print(name,start_date,end_date)
             data = Entry.objects.filter(firm_name=name,date__range=[start_date,end_date])
             if(data.count()==0): print("No data found")
             else: generateExcel(data,name,start_date,end_date)
-            
             # for i in data:
             #     print(str(i.date)+" "+str(i.firm_name)+" "+str(i.quantity)+" "+str(i.weight)+" "+str(i.remarks))
     else:

@@ -7,7 +7,12 @@ def generateExcel(data,name,start_date,end_date):
     end_date = end_date.strftime("%d-%m-%Y")
     print(os.getcwd())
     # os.geth
-    folder_path = '/home/sadiq/InvoiceGenerated/'
+    folder_path = os.getcwd()+"/bills"
+    try:
+        os.mkdir(folder_path)
+        print("Build directory successfully.")
+    except:
+        print("Directory already present.")
     file_name = "Invoice_"+str(name)+"_"+str(start_date)+"_"+str(end_date)+".xlsx"
     
 
