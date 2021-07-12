@@ -24,15 +24,21 @@
         #head1{
             text-align: center;
             margin: 30px 0px 20px 0px ;
-            font-weight: 400;
+            font-weight: bold;
             font-size: 22px;
             color: rgb(22, 21, 112);
-            /* border: 2px solid;
+            border: 3px solid;
             border-radius: 12px;
             border-color: black;
-            */
+            min-width: 90px;
+            padding: 5px;
+            border-color: white;
+            background-color:cornflowerblue;
+            border-color: black;
+            display:inline-block;
         }
-        #button1{
+        #button_text{
+            min-width:90px;
             color: rgb(44, 13, 114);
             background-color: wheat;
             border: 12px;
@@ -42,6 +48,9 @@
             width: 100px;
             margin: 10px;
             font-weight: bold;
+            background-color: beige;
+            display:inline-block;
+            text-decoration: none;       
         }
         .messages{
             color: crimson;
@@ -49,7 +58,7 @@
             margin-top: 30px;
             font-weight: bold;
             font-family: Arial, Helvetica, sans-serif;
-            /* width: 200px; */
+            width: 200px;
             height: 26px;
             border: 3px solid blue; 
             align-items: center;
@@ -58,30 +67,62 @@
             padding: 1px;
             box-sizing: content-box;
         }
+        #link1{
+            color:rgb(1, 0, 3);
+        }
+        #id_start_date,#id_end_date,#id_firm_name{
+            color: rgb(0, 4, 253);
+            background-color: wheat;
+            width: 88%;
+        }
     </style>
     <title>Print Details</title>
     
 </head>
-<body style="background-color: burlywood;">
+<body style="background-color:rgb(0, 255, 255)">
     <!-- <script type="text/javascript">
         alert('{{message}}'); -->
     <!-- </script> -->
     {% if messages %}
-    <ul class="messages" style="text-align: center;">
+    <div class="messages" >
         {% for message in messages %}
         <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
         {% endfor %}
-    </ul>
+    </div>
     {% endif %}
-    <p id="head1">Fill the details to be printed</p>
+    <p id="head1" align="center">Fill the details to be printed</p>
     {{form.non_field_errors}}
     <form method="post">
         {% csrf_token %}
-        <table align="center" style="padding: 0px;font-size: 18px;line-height: 30px;">
+        <table align="center" style="padding: 0px;font-size: 18px;line-height: 30px;color: black;">
             {{ form.as_table }}
         </table>
-        <button type="submit" id="button1">Submit</button>
+        <button type="submit" id="button_text" target="_blank" >Submit</button>
     </form>
+    <div>
+        <!-- <button type="button" href="http://127.0.0.1:8000/admin">Home Page</button> -->
+        
+        <a href="http://127.0.0.1:8000" 
+            style="font-family:Helvetica,Arial,sans-serif;
+                    line-height:16px;color:#ffffff;
+                    font-weight:400;
+                    text-decoration:none;
+                    font-size:14px;
+                    display:inline-block;
+                    padding:10px 24px;
+                    background-color:#4184f3;
+                    border-radius:5px;
+                    min-width:90px" >
+            Home page</a>
+        
+        <br><br>
+        <a href="http://127.0.0.1:8000/admin" 
+        style="font-family:Helvetica,Arial,sans-serif;
+                line-height:16px;color:#ffffff;
+                font-weight:400;
+                text-decoration:none;font-size:14px;display:inline-block;padding:10px 24px;background-color:#4184f3;border-radius:5px;min-width:90px">
+        Admin page</a>
+    </div>
 </body>
 
 </html>

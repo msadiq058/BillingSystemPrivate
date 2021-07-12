@@ -7,7 +7,7 @@ def generateExcel(data,name,start_date,end_date):
     end_date = end_date.strftime("%d-%m-%Y")
     print(os.getcwd())
     # os.geth
-    folder_path = os.getcwd()+"/bills"
+    folder_path = os.getcwd()+"/Invoices"
     try:
         os.mkdir(folder_path)
         print("Build directory successfully.")
@@ -99,16 +99,10 @@ def generateSummary(workbook,name,data,start_date,end_date):
         '5.0':6,
         '6.0':7
     }
-    index_to_size={
-        0:'1.0',
-        1:'1.5',
-        2:'2.0',
-        3:'2.5',
-        4:'3.0',
-        5:'4.0',
-        6:'5.0',
-        7:'6.0',
-    }
+    index_to_size={}
+    for key in size_to_index.keys():
+        index_to_size[size_to_index[key]]=key
+    print(index_to_size)
     for entry in data:
         # print(entry.size,(entry.size))
         if entry.making_type=='Framed':

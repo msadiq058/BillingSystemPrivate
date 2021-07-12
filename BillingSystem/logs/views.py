@@ -1,4 +1,5 @@
 
+from django.db.models.query import NamedValuesListIterable
 from django.shortcuts import render
 from django.http import  HttpResponse
 from .models import Entry,Firm
@@ -11,6 +12,7 @@ from django.contrib import messages
 def print_details(request):
     name =''
     # request.session.set_expiry(120)
+    form = NameForm
     if request.method=='POST':
         form = NameForm(request.POST)
         if(form.is_valid()):
@@ -21,15 +23,12 @@ def print_details(request):
             data = Entry.objects.filter(firm_name=name,date__range=[start_date,end_date])
             if(data.count()==0): 
                 print("No data found")
-                messages.info(request, "No data found!")
-            else: 
-                generateExcel(data,name,start_date,end_date)
-
+                return render(request,'logs/print_details.html',{'form':form})
+            else: generateExcel(data,name,start_date,end_date)
             # for i in data:
             #     print(str(i.date)+" "+str(i.firm_name)+" "+str(i.quantity)+" "+str(i.weight)+" "+str(i.remarks))
-    else:
-        form = NameForm
     return render(request,'logs/print_details.html',{'form':form})
 
+
 def home_page(request):
-    return render(request, 'logs/home_page.html')
+    return render(request,'logs/home_page.html')
